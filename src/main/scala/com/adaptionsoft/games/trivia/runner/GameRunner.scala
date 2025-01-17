@@ -14,6 +14,7 @@ object GameRunner:
     aGame.add("Sue")
 
     val rand: Random = new Random
+    rand.setSeed(888)
 
     while notAWinner do
       aGame.roll(rand.nextInt(5) + 1)

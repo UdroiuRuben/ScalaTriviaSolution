@@ -1,18 +1,4 @@
-import com.adaptionsoft.games.trivia.utils.QuestionCategories
+val currentPlace = 5
+val roll = 5
 
-import java.util.Random
-import scala.collection.mutable.ListBuffer
-
-val rand: Random = new Random
-
-rand.setSeed(1000)
-
-(0 to 5).foreach(_ => println(rand.nextInt(5)))
-
-
-
-List.tabulate(10)(i => s"ceva test ${i + 1}")
-
-val x = List(1, 2, 3)
-
-x(2)
+if (currentPlace + roll > 11) currentPlace + roll - 12 else currentPlace + roll
