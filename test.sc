@@ -1,19 +1,18 @@
-import java.util
+import com.adaptionsoft.games.trivia.utils.QuestionCategories
+
 import java.util.Random
-import scala.collection.immutable.Queue
+import scala.collection.mutable.ListBuffer
 
-(0 to 5).map(_ => println(rand.nextInt(5)))
+val rand: Random = new Random
 
+rand.setSeed(1000)
 
-type caca = String
-
-
-val x: caca = "ceva"
+(0 to 5).foreach(_ => println(rand.nextInt(5)))
 
 
-case class A(a: Int = 1, b: Int = 2)
 
-val xx: A = A()
+List.tabulate(10)(i => s"ceva test ${i + 1}")
 
+val x = List(1, 2, 3)
 
-val test: util.Queue[String] = Queue(List("a", "b"): _*)
+x(2)

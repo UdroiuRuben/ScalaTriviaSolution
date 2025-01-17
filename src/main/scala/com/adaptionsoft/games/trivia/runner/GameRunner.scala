@@ -13,7 +13,7 @@ object GameRunner:
     aGame.add("Pat")
     aGame.add("Sue")
 
-    var rand: Random = new Random
+    val rand: Random = new Random
 
     while notAWinner do
       aGame.roll(rand.nextInt(5) + 1)
