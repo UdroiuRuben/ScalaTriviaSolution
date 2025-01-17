@@ -24,7 +24,7 @@ class RefactoredGame {
   private def generateQuestions(questionTopic: String, numberOfQuestions: Int): List[String] = {
     List.tabulate(numberOfQuestions)(questionNumber => s"$questionTopic Question ${questionNumber + 1}")
   }
-  
+
 
   def isPlayable: Boolean = (howManyPlayers >= 2)
 
@@ -50,7 +50,7 @@ class RefactoredGame {
         if (places(currentPlayer) > 11) places(currentPlayer) = places(currentPlayer) - 12
         println(players.get(currentPlayer) + "'s new location is " + places(currentPlayer))
         println("The category is " + currentCategory)
-        askQuestion
+        askQuestion(places(currentPlayer))
       }
       else {
         println(players.get(currentPlayer) + " is not getting out of the penalty box")
@@ -62,17 +62,20 @@ class RefactoredGame {
       if (places(currentPlayer) > 11) places(currentPlayer) = places(currentPlayer) - 12
       println(players.get(currentPlayer) + "'s new location is " + places(currentPlayer))
       println("The category is " + currentCategory)
-      askQuestion
+      askQuestion(places(currentPlayer))
     }
 
-  private def askQuestion: Unit =
-    if (currentCategory == "Pop") println(popQuestions.head)
-    if (currentCategory == "Science") println(scienceQuestions.head)
-    if (currentCategory == "Sports") println(sportsQuestions.head)
-    if (currentCategory == "Rock") println(rockQuestions.head)
+  private def askQuestion(playerPlace: Int): Unit =
+    currentCategory(playerPlace) match {
+      case Pop => println(popQuestions.head)
+      case Science => println(scienceQuestions.head)
+      case Sports => println(sportsQuestions.head)
+      case Rock => println(rockQuestions.head)
+      case _ => throw new Exception("An error occurred during askQuestion!")
+    }
 
-  private def currentCategory: String = {
-    places(currentPlayer) % QuestionCategories.values.size match {
+  private def currentCategory(playerPlace: Int): QuestionCategory = {
+    playerPlace % QuestionCategories.values.size match {
       case 0 => Pop
       case 1 => Science
       case 2 => Sports

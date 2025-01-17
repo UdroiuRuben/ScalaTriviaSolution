@@ -3,7 +3,7 @@ package com.adaptionsoft.games.trivia.utils
 import scala.language.implicitConversions
 
 object QuestionCategories extends Enumeration {
-  private type QuestionCategory = Value
+  type QuestionCategory = Value
 
   val Pop: QuestionCategory = Value("Pop")
   val Science: QuestionCategory = Value("Science")
