@@ -1,6 +1,6 @@
 package com.adaptionsoft.games.trivia.runner
 
-import com.adaptionsoft.games.trivia.utils.Constants.{GAME_CONTINUES, GAME_ENDS_HERE}
+import com.adaptionsoft.games.trivia.utils.Constants.{CONTINUE_GAME, END_GAME}
 import com.adaptionsoft.games.uglytrivia.GameSession
 
 import scala.annotation.tailrec
@@ -28,10 +28,10 @@ object RefactoredGameRunner {
   }
 
   @tailrec
-  def gameInProgress(gameSeed: Random, currentGameSession: GameSession, isGameFinished: Boolean): (GameSession, Boolean) = {
-    isGameFinished match {
-      case GAME_ENDS_HERE => (currentGameSession, currentGameSession.finishGame)
-      case GAME_CONTINUES =>
+  def gameInProgress(gameSeed: Random, currentGameSession: GameSession, gameFinished: Boolean): (GameSession, Boolean) = {
+    gameFinished match {
+      case END_GAME => (currentGameSession, currentGameSession.finishGame)
+      case CONTINUE_GAME =>
         val rollGameSession = currentGameSession.roll(gameSeed.nextInt(5) + 1)
         val (afterAnswerGameSession, currentGameStatus) = if (gameSeed.nextInt(9) == 7) rollGameSession.wrongAnswer() else rollGameSession.wasCorrectlyAnswered()
 

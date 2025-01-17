@@ -64,7 +64,7 @@ case class GameSession(
 
     val updatedPlayer = player.copy(inPenaltyBox = true)
 
-    (updateGameRound(updatedPlayer), GAME_CONTINUES)
+    (updateGameRound(updatedPlayer), CONTINUE_GAME)
   }
 
   def wasCorrectlyAnswered(): (GameSession, Boolean) = {
@@ -78,7 +78,7 @@ case class GameSession(
       } else {
         val nextPlayer = prepareNextPlayer(players.length, player.id)
 
-        (this.copy(currentPlayerId = nextPlayer), GAME_CONTINUES)
+        (this.copy(currentPlayerId = nextPlayer), CONTINUE_GAME)
       }
     } else {
       printAnswerWasCorrectMessage(player.name, updatedPlayer.goldCoins)
@@ -119,7 +119,7 @@ case class GameSession(
   }
 
   private def checkIfGameEnds(player: Player): (GameSession, Boolean) = {
-    if (didPlayerWin(player.goldCoins)) (this.copy(players = players.updated(currentPlayerId, player)), GAME_ENDS_HERE) else (updateGameRound(player), GAME_CONTINUES)
+    if (didPlayerWin(player.goldCoins)) (this.copy(players = players.updated(currentPlayerId, player)), END_GAME) else (updateGameRound(player), CONTINUE_GAME)
   }
 
   private def updateGameRound(currentPlayer: Player): GameSession = {
@@ -131,8 +131,7 @@ case class GameSession(
   def finishGame: Boolean = {
     println(s"${players(currentPlayerId).name} won the game!")
 
-    GAME_ENDS_HERE
+    END_GAME
   }
 
-  def getWinner: Player = players(currentPlayerId)
 }
