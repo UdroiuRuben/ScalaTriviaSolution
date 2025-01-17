@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia
 
+import com.adaptionsoft.games.trivia.models.Player
 import com.adaptionsoft.games.trivia.utils.Constants.DEFAULT_NUMBER_OF_QUESTIONS
 import com.adaptionsoft.games.trivia.utils.QuestionCategories
 import com.adaptionsoft.games.trivia.utils.QuestionCategories.*
@@ -7,74 +8,71 @@ import com.adaptionsoft.games.trivia.utils.QuestionCategories.*
 import java.util
 import java.util.{ArrayList, LinkedList}
 
-class RefactoredGame {
-  var players: ArrayList[String] = new ArrayList[String]
-  var places: Array[Int] = new Array[Int](6)
-  var purses: Array[Int] = new Array[Int](6)
-  var inPenaltyBox: Array[Boolean] = new Array[Boolean](6)
+
+object RefactoredGame {
+  val players: ArrayList[Player] = new ArrayList[Player]
+  var currentPlayer: Int = 0
+  var isGettingOutOfPenaltyBox: Boolean = false
+
+//  var places: Array[Int] = new Array[Int](6)
+//  var purses: Array[Int] = new Array[Int](6)
+//  var inPenaltyBox: Array[Boolean] = new Array[Boolean](6)
 
   val popQuestions: List[String] = generateQuestions(Pop, DEFAULT_NUMBER_OF_QUESTIONS)
   val scienceQuestions: List[String] = generateQuestions(Science, DEFAULT_NUMBER_OF_QUESTIONS)
   val sportsQuestions: List[String] = generateQuestions(Sports, DEFAULT_NUMBER_OF_QUESTIONS)
   val rockQuestions: List[String] = generateQuestions(Rock, DEFAULT_NUMBER_OF_QUESTIONS)
 
-  var currentPlayer: Int = 0
-  var isGettingOutOfPenaltyBox: Boolean = false
-
   private def generateQuestions(questionTopic: String, numberOfQuestions: Int): List[String] = {
     List.tabulate(numberOfQuestions)(questionNumber => s"$questionTopic Question ${questionNumber + 1}")
   }
+  
+  def isPlayable: Boolean = players.size >= 2
 
+  def add(playerName: String): Unit = {
+    val player = Player(playerName = playerName)
+    players.add(player)
 
-  def isPlayable: Boolean = (howManyPlayers >= 2)
+    println(s"${player.playerName} was added")
+    println(s"Number of participants ${players.size}")
+  }
 
-  def add(playerName: String): Boolean =
-    players.add(playerName)
-    places(howManyPlayers) = 0
-    purses(howManyPlayers) = 0
-    inPenaltyBox(howManyPlayers) = false
-    println(playerName + " was added")
-    println("They are player number " + players.size)
-    true
-
-  def howManyPlayers: Int = players.size
-
-  def roll(roll: Int): Unit =
-    println(players.get(currentPlayer) + " is the current player")
+  def roll(roll: Int): Unit = {
+    val currentPlayerDude = players.get(currentPlayer)
+    val currentPlayerName = currentPlayerDude.playerName
+    val currentPlayerPlace = currentPlayerDude.place
+    
+    println(s"$currentPlayerName is the current player")
     println("They have rolled a " + roll)
-    if (inPenaltyBox(currentPlayer)) {
-      if (roll % 2 != 0) {
-        isGettingOutOfPenaltyBox = true
-        println(players.get(currentPlayer) + " is getting out of the penalty box")
-        places(currentPlayer) = places(currentPlayer) + roll
-        if (places(currentPlayer) > 11) places(currentPlayer) = places(currentPlayer) - 12
-        println(players.get(currentPlayer) + "'s new location is " + places(currentPlayer))
-        println("The category is " + currentCategory)
-        askQuestion(places(currentPlayer))
-      }
-      else {
-        println(players.get(currentPlayer) + " is not getting out of the penalty box")
-        isGettingOutOfPenaltyBox = false
-      }
-    }
-    else {
-      places(currentPlayer) = places(currentPlayer) + roll
-      if (places(currentPlayer) > 11) places(currentPlayer) = places(currentPlayer) - 12
-      println(players.get(currentPlayer) + "'s new location is " + places(currentPlayer))
-      println("The category is " + currentCategory)
-      askQuestion(places(currentPlayer))
-    }
+    
+    val newPositionInLeaderboardForCurrentPlayer = updatePlayerPlace(currentPlayerPlace, roll)
+    println(s"$currentPlayerName's new location is $newPositionInLeaderboardForCurrentPlayer")
+    println(s"The category is ${currentCategory(newPositionInLeaderboardForCurrentPlayer)}")
 
-  private def askQuestion(playerPlace: Int): Unit =
+    val gettingOut = if (currentPlayerDude.inPenaltyBox && roll % 2 != 0) true else false
+    
+    
+    val updatedPlayer = currentPlayerDude
+      .copy(place = newPositionInLeaderboardForCurrentPlayer, isGettingOutOfPenaltyBox = gettingOut)
+    
+    askQuestion(newPositionInLeaderboardForCurrentPlayer)
+  }
+  
+  private def updatePlayerPlace(currentPlace: Int, roll: Int): Int = {
+    if (currentPlace + roll > 11) currentPlace + roll - 12 else currentPlace + roll
+  }
+  
+  def askQuestion(playerPlace: Int): String = {
     currentCategory(playerPlace) match {
-      case Pop => println(popQuestions.head)
-      case Science => println(scienceQuestions.head)
-      case Sports => println(sportsQuestions.head)
-      case Rock => println(rockQuestions.head)
+      case Pop => popQuestions.head
+      case Science => scienceQuestions.head
+      case Sports => sportsQuestions.head
+      case Rock => rockQuestions.head
       case _ => throw new Exception("An error occurred during askQuestion!")
     }
+  }
 
-  private def currentCategory(playerPlace: Int): QuestionCategory = {
+  def currentCategory(playerPlace: Int): QuestionCategory = {
     playerPlace % QuestionCategories.values.size match {
       case 0 => Pop
       case 1 => Science

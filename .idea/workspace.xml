@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61c3cf73-6d34-41a7-bae2-5bb825c94b9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GameExplanation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/Constants.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/QuestionCategories.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/scala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/scala.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/scala.scala-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/scala.scala-build.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/RefactoredGame.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/RefactoredGame.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/unit-tests/scala/UnitTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/unit-tests/scala/UnitTests.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.sc" beforeDir="false" afterPath="$PROJECT_DIR$/test.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +54,9 @@
     "Application.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ScalaTest.UnitTests.UT05 - test currentCategory.executor": "Run",
+    "ScalaTest.UnitTests.UTC06 - test askQuestion for 1 question from each category.executor": "Run",
+    "ScalaTest.UnitTests.UTC06 - test askQuestion.executor": "Run",
     "ScalaTest.UnitTests.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -75,22 +69,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="ScalaTest.UnitTests">
-    <configuration name="main" type="Application" factoryName="Application" temporary="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="11" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.adaptionsoft.games.trivia.runner.main" />
-      <module name="scala" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.adaptionsoft.games.trivia.runner.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="ScalaTest.UnitTests.UTC06 - askQuestion: multiple questions from the same category">
     <configuration name="UnitTests" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala" />
       <option name="VMParameters" value="" />
@@ -117,10 +96,121 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UnitTests.UT05 - test currentCategory" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="UnitTests" />
+      <option name="testName" value="UT05 - test currentCategory" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnitTests.UTC06 - askQuestion: multiple questions from the same category" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="UnitTests" />
+      <option name="testName" value="UTC06 - askQuestion: multiple questions from the same category" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnitTests.UTC06 - test askQuestion for 1 question from each category" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="UnitTests" />
+      <option name="testName" value="UTC06 - test askQuestion for 1 question from each category" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnitTests.UTC06 - test askQuestion" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="scala" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="UnitTests" />
+      <option name="testName" value="UTC06 - test askQuestion" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.UnitTests.UTC06 - askQuestion: multiple questions from the same category" />
+        <item itemvalue="ScalaTest.UnitTests.UTC06 - test askQuestion for 1 question from each category" />
+        <item itemvalue="ScalaTest.UnitTests.UTC06 - test askQuestion" />
+        <item itemvalue="ScalaTest.UnitTests.UT05 - test currentCategory" />
         <item itemvalue="ScalaTest.UnitTests" />
-        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +236,7 @@
       <updated>1737104570202</updated>
       <workItem from="1737104571251" duration="87000" />
       <workItem from="1737104740602" duration="26000" />
-      <workItem from="1737104776242" duration="6899000" />
+      <workItem from="1737104776242" duration="9869000" />
     </task>
     <servers />
   </component>
