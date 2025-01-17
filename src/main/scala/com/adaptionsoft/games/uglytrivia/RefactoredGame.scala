@@ -1,6 +1,7 @@
 package com.adaptionsoft.games.uglytrivia
 
 import com.adaptionsoft.games.trivia.utils.Constants.DEFAULT_NUMBER_OF_QUESTIONS
+import com.adaptionsoft.games.trivia.utils.QuestionCategories
 import com.adaptionsoft.games.trivia.utils.QuestionCategories.*
 
 import java.util
@@ -70,17 +71,15 @@ class RefactoredGame {
     if (currentCategory == "Sports") println(sportsQuestions.head)
     if (currentCategory == "Rock") println(rockQuestions.head)
 
-  private def currentCategory: String =
-    if (places(currentPlayer) == 0) return "Pop"
-    if (places(currentPlayer) == 4) return "Pop"
-    if (places(currentPlayer) == 8) return "Pop"
-    if (places(currentPlayer) == 1) return "Science"
-    if (places(currentPlayer) == 5) return "Science"
-    if (places(currentPlayer) == 9) return "Science"
-    if (places(currentPlayer) == 2) return "Sports"
-    if (places(currentPlayer) == 6) return "Sports"
-    if (places(currentPlayer) == 10) return "Sports"
-    "Rock"
+  private def currentCategory: String = {
+    places(currentPlayer) % QuestionCategories.values.size match {
+      case 0 => Pop
+      case 1 => Science
+      case 2 => Sports
+      case 3 => Rock
+      case _ => throw new Exception("Unidentified category!")
+    }
+  }
 
   def wasCorrectlyAnswered: Boolean =
     if (inPenaltyBox(currentPlayer)) {
