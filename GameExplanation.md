@@ -19,4 +19,8 @@ A simple circular trivia game with questions from multiple categories. The first
 3. Start the game: begin gameplay according to the rules.
 
 # Algorithm
-poof poof 
+1. The roll value is determinate by: `gameSeed.nextInt(5) + 1`
+2. The question response is determinate by: `gameSeed.nextInt(9) == 7`
+   * true -> wrong answer
+   * false -> correct answer
+3. etc etc
