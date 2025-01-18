@@ -1,6 +1,6 @@
 import com.adaptionsoft.games.trivia.models.{GameQuestions, Player}
 import com.adaptionsoft.games.trivia.utils.Constants.DEFAULT_NUMBER_OF_QUESTIONS
-import com.adaptionsoft.games.uglytrivia.GameSession
+import com.adaptionsoft.games.trivia.utils.GameSession
 
 trait ExpectedResults {
   val expectedGameSessionT08: GameSession = {

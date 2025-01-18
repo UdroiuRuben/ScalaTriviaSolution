@@ -1,14 +1,22 @@
 <h1>Game explanation</h1>
 
 # Introduction
-A simple trivia game with question from multiple categories.
+A simple circular trivia game with questions from multiple categories. The first person to reach 6 gold wins the game.
 
-# Start & End conditions || Rules
-In order to be played this game need at least 2 players. (this is how the game starts)
-Only one player wins the game based on the coins number. (this is how the game ends)
+# Rules
+1. The game requires at least 2 players to play.
+2. When a player reaches 6 golds, they are declared the winner, and the game stops.
+3. The game can have only one winner.
+4. A turn consists of a player, a dice roll, a question, and an answer.
+5. The answer can be either correct or incorrect.
+6. After a turn ends, the next player’s turn begins.
 
+# Workflow
+1. Initialize the game
+    * Add players. 
+    * Add questions (if not specified, a default of 50 questions per topic is assigned).
+2. Validate the game: ensure the game meets all required conditions.
+3. Start the game: begin gameplay according to the rules.
 
-# Game algorithm
-1. Init the game
-2. Add players
-3. roll the dices
+# Algorithm
+poof poof 

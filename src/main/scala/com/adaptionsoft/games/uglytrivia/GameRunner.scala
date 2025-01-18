@@ -1,8 +1,6 @@
-package com.adaptionsoft.games.trivia.runner
+package com.adaptionsoft.games.uglytrivia
 
-import com.adaptionsoft.games.uglytrivia.Game
 import java.util.Random
-
 
 object GameRunner:
   var notAWinner = true

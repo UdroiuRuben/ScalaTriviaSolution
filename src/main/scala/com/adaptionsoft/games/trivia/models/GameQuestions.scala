@@ -21,7 +21,7 @@ object GameQuestions {
   }
 
   private def generateQuestions(questionTopic: String, numberOfQuestions: Int): List[String] = {
-    List.tabulate(numberOfQuestions)(questionNumber => s"$questionTopic Question ${questionNumber + 1}")
+    List.tabulate(numberOfQuestions)(questionNumber => s"$questionTopic question ${questionNumber + 1}")
   }
   
 }

@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61c3cf73-6d34-41a7-bae2-5bb825c94b9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/GameQuestions.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/GameSession.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/ExpectedResults.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/UnitTests.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/scala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/scala.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameExplanation.md" beforeDir="false" afterPath="$PROJECT_DIR$/GameExplanation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/GameQuestions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/GameQuestions.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/Player.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/Player.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/GameRunner.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/Constants.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/Constants.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/RefactoredGame.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/unit-tests/scala/UnitTests.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.sc" beforeDir="false" afterPath="$PROJECT_DIR$/test.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/GameSession.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/unit_tests/scala/ExpectedResults.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/ExpectedResults.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/unit_tests/scala/UnitTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/UnitTests.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +59,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.RefactoredGameRunner.executor": "Run",
+    "Application.com.adaptionsoft.games.uglytrivia.main.executor": "Run",
     "Application.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -85,13 +81,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="ScalaTest.UnitTests.UT08 - test game">
+  <component name="RunManager" selected="ScalaTest.UnitTests">
     <configuration name="RefactoredGameRunner" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.adaptionsoft.games.trivia.runner.RefactoredGameRunner" />
       <module name="scala" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.adaptionsoft.games.trivia.runner.*" />
+          <option name="PATTERN" value="com.adaptionsoft.games.trivia.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.adaptionsoft.games.trivia.runner.main" />
+    <configuration name="com.adaptionsoft.games.uglytrivia.main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.adaptionsoft.games.uglytrivia.main" />
       <module name="scala" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.adaptionsoft.games.trivia.runner.*" />
+          <option name="PATTERN" value="com.adaptionsoft.games.uglytrivia.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,7 +134,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UnitTests.UT02 - Game is unplayable" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="UnitTests.Integration test - test a full game" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -159,7 +155,7 @@
       <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <option name="testClassPath" value="UnitTests" />
-      <option name="testName" value="UT02 - Game is unplayable" />
+      <option name="testName" value="Integration test - test a full game" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,10 +191,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="ScalaTest.UnitTests" />
-        <item itemvalue="ScalaTest.UnitTests.UT08 - test game" />
+        <item itemvalue="ScalaTest.UnitTests.Integration test - test a full game" />
+        <item itemvalue="Application.com.adaptionsoft.games.uglytrivia.main" />
         <item itemvalue="Application.RefactoredGameRunner" />
-        <item itemvalue="Application.main" />
-        <item itemvalue="ScalaTest.UnitTests.UT02 - Game is unplayable" />
+        <item itemvalue="ScalaTest.UnitTests.UT08 - test game" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +220,7 @@
       <updated>1737104570202</updated>
       <workItem from="1737104571251" duration="87000" />
       <workItem from="1737104740602" duration="26000" />
-      <workItem from="1737104776242" duration="30565000" />
+      <workItem from="1737104776242" duration="36715000" />
     </task>
     <servers />
   </component>

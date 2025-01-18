@@ -1,8 +1,7 @@
-package com.adaptionsoft.games.uglytrivia
+package com.adaptionsoft.games.trivia.utils
 
 import com.adaptionsoft.games.trivia.models.{GameQuestions, Player}
 import com.adaptionsoft.games.trivia.utils.Constants.*
-import com.adaptionsoft.games.trivia.utils.GameHelper
 import com.adaptionsoft.games.trivia.utils.QuestionCategories.*
 
 case class GameSession(
@@ -14,60 +13,60 @@ case class GameSession(
     GameSession(questions = GameQuestions.initializeQuestions(numberOfQuestions))
   }
 
-  def isPlayable: Boolean = players.length >= 2
-
   def addPlayer(playerName: String): GameSession = {
     val newPlayersList = players :+ Player(id = players.length, name = playerName)
     println(s"$playerName was added")
     println(s"Number of players: ${newPlayersList.length}")
 
-    copy(players = newPlayersList)
+    this.copy(players = newPlayersList)
   }
-
-  def roll(roll: Int): GameSession = {
+  
+  def isPlayable: Boolean = players.length >= 2
+  
+  def rollDices(roll: Int): GameSession = {
     val currentPlayer = players(currentPlayerId)
-
-    println()
     println(s"${currentPlayer.name} is the current player")
     println(s"They have rolled a $roll")
 
     val isGettingOutOfPenaltyBox = currentPlayer.inPenaltyBox && (roll % 2 != 0)
-
-    val newPlayerGameLocation = if (!isGettingOutOfPenaltyBox && currentPlayer.inPenaltyBox) {
+    val nextQuestionCategoryIndex = if (!isGettingOutOfPenaltyBox && currentPlayer.inPenaltyBox) {
       println(s"${currentPlayer.name} is not getting out of the penalty box")
 
-      currentPlayer.gameLocation
+      currentPlayer.questionCategoryIndex
     } else {
       if (currentPlayer.inPenaltyBox) println(s"${currentPlayer.name} is getting out of the penalty box")
-
-      val newLocation = newPlayerLocation(currentPlayer.gameLocation, roll)
+      val newLocation = calculateNewPlayerGameLocation(currentPlayer.questionCategoryIndex, roll)
       println(s"${currentPlayer.name}'s new location is $newLocation")
       println(s"The category is ${currentCategory(newLocation)}")
 
       newLocation
     }
 
-    val updatedPlayer = currentPlayer
-      .copy(gameLocation = newPlayerGameLocation, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
-
-    val (newGameSessionWithUpdatedQuestions, question) = askQuestion(newPlayerGameLocation)
+    val updatedPlayer = currentPlayer.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
+    val (newGameSessionWithUpdatedQuestions, question) = askQuestion(nextQuestionCategoryIndex)
+    
     println(question)
-
     newGameSessionWithUpdatedQuestions.copy(players = players.updated(currentPlayerId, updatedPlayer))
   }
-
-
+  
   def wrongAnswer(): (GameSession, Boolean) = {
     val player = players(currentPlayerId)
     println("Question was incorrectly answered")
-    println(s"${player.name} was sent to the penalty box")
+    
+    val updatedGameSession = if (!player.inPenaltyBox) {
+      println(s"${player.name} was sent to the penalty box")
+      player.copy(inPenaltyBox = true)
+      
+      updateGameRound(player.copy(inPenaltyBox = true))
+    } else {
+      val nextPlayer = prepareNextPlayer(players.length, player.id)
+      this.copy(currentPlayerId = nextPlayer)
+    }
 
-    val updatedPlayer = player.copy(inPenaltyBox = true)
-
-    (updateGameRound(updatedPlayer), CONTINUE_GAME)
+    (updatedGameSession, CONTINUE_GAME)
   }
 
-  def wasCorrectlyAnswered(): (GameSession, Boolean) = {
+  def correctAnswer(): (GameSession, Boolean) = {
     val player = players(currentPlayerId)
     val updatedPlayer = player.copy(goldCoins = player.goldCoins + 1)
 
@@ -105,7 +104,7 @@ case class GameSession(
       case _ => throw new Exception("Undefined question category!")
     }
 
-    (copy(questions = updatedQuestions), question)
+    (this.copy(questions = updatedQuestions), question)
   }
 
   private def updateQuestions(questionCategory: QuestionCategory): GameQuestions = {
@@ -118,14 +117,18 @@ case class GameSession(
     }
   }
 
-  private def checkIfGameEnds(player: Player): (GameSession, Boolean) = {
-    if (didPlayerWin(player.goldCoins)) (this.copy(players = players.updated(currentPlayerId, player)), END_GAME) else (updateGameRound(player), CONTINUE_GAME)
+  private def checkIfGameEnds(updatedPlayer: Player): (GameSession, Boolean) = {
+    if (didPlayerWin(updatedPlayer.goldCoins)) {
+      (this.copy(players = players.updated(currentPlayerId, updatedPlayer)), END_GAME)
+    } else {
+      (updateGameRound(updatedPlayer), CONTINUE_GAME)
+    }
   }
 
   private def updateGameRound(currentPlayer: Player): GameSession = {
-    val nextPlayer = prepareNextPlayer(players.length, currentPlayer.id)
+    val nextPlayer = prepareNextPlayer(players.length, currentPlayerId)
 
-    copy(players = players.updated(currentPlayerId, currentPlayer), currentPlayerId = nextPlayer)
+    this.copy(players = players.updated(currentPlayerId, currentPlayer), currentPlayerId = nextPlayer)
   }
 
   def finishGame: Boolean = {
