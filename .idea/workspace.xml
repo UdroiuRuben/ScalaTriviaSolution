@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61c3cf73-6d34-41a7-bae2-5bb825c94b9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +213,7 @@
       <updated>1737104570202</updated>
       <workItem from="1737104571251" duration="87000" />
       <workItem from="1737104740602" duration="26000" />
-      <workItem from="1737104776242" duration="42439000" />
+      <workItem from="1737104776242" duration="43714000" />
     </task>
     <servers />
   </component>

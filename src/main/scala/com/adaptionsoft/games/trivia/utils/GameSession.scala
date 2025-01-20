@@ -20,21 +20,23 @@ case class GameSession(
 
     this.copy(players = newPlayersList)
   }
-  
+
   def isPlayable: Boolean = players.length >= 2
-  
+
   def rollDices(roll: Int): GameSession = {
     val currentPlayer = players(currentPlayerId)
     println(s"${currentPlayer.name} is the current player")
     println(s"They have rolled a $roll")
 
     val isGettingOutOfPenaltyBox = currentPlayer.inPenaltyBox && (roll % 2 != 0)
+
     val nextQuestionCategoryIndex = if (!isGettingOutOfPenaltyBox && currentPlayer.inPenaltyBox) {
       println(s"${currentPlayer.name} is not getting out of the penalty box")
 
       currentPlayer.questionCategoryIndex
     } else {
       if (currentPlayer.inPenaltyBox) println(s"${currentPlayer.name} is getting out of the penalty box")
+
       val newLocation = calculateNewPlayerGameLocation(currentPlayer.questionCategoryIndex, roll)
       println(s"${currentPlayer.name}'s new location is $newLocation")
       println(s"The category is ${currentCategory(newLocation)}")
@@ -42,21 +44,21 @@ case class GameSession(
       newLocation
     }
 
-    val updatedPlayer = currentPlayer.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
     val (newGameSessionWithUpdatedQuestions, question) = askQuestion(nextQuestionCategoryIndex)
-    
+
     println(question)
+    val updatedPlayer = currentPlayer.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
     newGameSessionWithUpdatedQuestions.copy(players = players.updated(currentPlayerId, updatedPlayer))
   }
-  
+
   def wrongAnswer(): (GameSession, Boolean) = {
     val player = players(currentPlayerId)
     println("Question was incorrectly answered")
-    
+
     val updatedGameSession = if (!player.inPenaltyBox) {
       println(s"${player.name} was sent to the penalty box")
       player.copy(inPenaltyBox = true)
-      
+
       updateGameRound(player.copy(inPenaltyBox = true))
     } else {
       val nextPlayer = prepareNextPlayer(players.length, player.id)
