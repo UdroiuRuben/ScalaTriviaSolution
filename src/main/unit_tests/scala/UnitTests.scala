@@ -5,7 +5,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 import scala.util.Random
 
-class UnitTests extends AnyFunSuite with ExpectedResults{
+class UnitTests extends AnyFunSuite with ExpectedResults {
   private final val DEFAULT_GAME_QUESTIONS_NUMBER = 50
 
   test("UT01 - Game is playable") {
