@@ -1,10 +1,9 @@
 package com.adaptionsoft.games.trivia.utils
 
-import com.adaptionsoft.games.trivia.utils.Constants.FIRST_PLAYER_ID
 import com.adaptionsoft.games.trivia.utils.QuestionCategories.*
 
 trait GameHelper {
-  def prepareNextPlayer(numberOfPlayers: Int, currentPlayerId: Int): Int = if (numberOfPlayers == currentPlayerId + 1) FIRST_PLAYER_ID else currentPlayerId + 1
+  def prepareNextPlayer(numberOfPlayers: Int, currentPlayerId: Int): Int = (currentPlayerId + 1) % numberOfPlayers
 
   def printAnswerWasCorrectMessage(playerName: String, playerGold: Int): Unit = {
     println("Answer was correct!!!!")
@@ -21,7 +20,7 @@ trait GameHelper {
     }
   }
 
-  def calculateNewPlayerGameLocation(currentPlace: Int, roll: Int): Int = if (currentPlace + roll > 11) currentPlace + roll - 12 else currentPlace + roll
+  def calculateNewPlayerGameLocation(currentPlace: Int, roll: Int): Int = (currentPlace + roll) % 12
 
   def didPlayerWin(playerGold: Int): Boolean = playerGold == 6
 }

@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61c3cf73-6d34-41a7-bae2-5bb825c94b9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/GameQuestions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/GameQuestions.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/Player.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/models/Player.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/GameRunner.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/runner/RefactoredGameRunner.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/Constants.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/Constants.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/uglytrivia/GameSession.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/unit_tests/scala/ExpectedResults.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/ExpectedResults.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/unit_tests/scala/UnitTests.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/unit_tests/scala/UnitTests.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +55,7 @@
     "Application.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ScalaTest.UnitTests.Integration test - test a full game.executor": "Run",
     "ScalaTest.UnitTests.UT02 - Game is unplayable.executor": "Run",
     "ScalaTest.UnitTests.UT05 - test currentCategory.executor": "Run",
     "ScalaTest.UnitTests.UT08 - test game.executor": "Run",
@@ -191,9 +184,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="ScalaTest.UnitTests" />
-        <item itemvalue="ScalaTest.UnitTests.Integration test - test a full game" />
-        <item itemvalue="Application.com.adaptionsoft.games.uglytrivia.main" />
         <item itemvalue="Application.RefactoredGameRunner" />
+        <item itemvalue="Application.com.adaptionsoft.games.uglytrivia.main" />
+        <item itemvalue="ScalaTest.UnitTests.Integration test - test a full game" />
         <item itemvalue="ScalaTest.UnitTests.UT08 - test game" />
       </list>
     </recent_temporary>
@@ -220,7 +213,7 @@
       <updated>1737104570202</updated>
       <workItem from="1737104571251" duration="87000" />
       <workItem from="1737104740602" duration="26000" />
-      <workItem from="1737104776242" duration="36715000" />
+      <workItem from="1737104776242" duration="42439000" />
     </task>
     <servers />
   </component>
