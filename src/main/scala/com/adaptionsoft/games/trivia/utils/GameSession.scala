@@ -24,30 +24,30 @@ case class GameSession(
   def isPlayable: Boolean = players.length >= 2
 
   def rollDices(roll: Int): GameSession = {
-    val currentPlayer = players(currentPlayerId)
-    println(s"${currentPlayer.name} is the current player")
+    val player = players(currentPlayerId)
+    println(s"${player.name} is the current player")
     println(s"They have rolled a $roll")
 
-    val isGettingOutOfPenaltyBox = currentPlayer.inPenaltyBox && (roll % 2 != 0)
+    val isGettingOutOfPenaltyBox = player.inPenaltyBox && (roll % 2 != 0)
 
-    val nextQuestionCategoryIndex = if (!isGettingOutOfPenaltyBox && currentPlayer.inPenaltyBox) {
-      println(s"${currentPlayer.name} is not getting out of the penalty box")
+    val nextQuestionCategoryIndex = if (!isGettingOutOfPenaltyBox && player.inPenaltyBox) {
+      println(s"${player.name} is not getting out of the penalty box")
 
-      currentPlayer.questionCategoryIndex
+      player.questionCategoryIndex
     } else {
-      if (currentPlayer.inPenaltyBox) println(s"${currentPlayer.name} is getting out of the penalty box")
+      val nextQuestionCategory = calculateNextQuestionCategoryIndex(player.questionCategoryIndex, roll)
 
-      val newLocation = calculateNewPlayerGameLocation(currentPlayer.questionCategoryIndex, roll)
-      println(s"${currentPlayer.name}'s new location is $newLocation")
-      println(s"The category is ${currentCategory(newLocation)}")
+      if (player.inPenaltyBox) println(s"${player.name} is getting out of the penalty box")
+      println(s"${player.name}'s new location is $nextQuestionCategory")
+      println(s"The category is ${currentCategory(nextQuestionCategory)}")
 
-      newLocation
+      nextQuestionCategory
     }
 
     val (newGameSessionWithUpdatedQuestions, question) = askQuestion(nextQuestionCategoryIndex)
-
     println(question)
-    val updatedPlayer = currentPlayer.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
+    
+    val updatedPlayer = player.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
     newGameSessionWithUpdatedQuestions.copy(players = players.updated(currentPlayerId, updatedPlayer))
   }
 
@@ -57,12 +57,10 @@ case class GameSession(
 
     val updatedGameSession = if (!player.inPenaltyBox) {
       println(s"${player.name} was sent to the penalty box")
-      player.copy(inPenaltyBox = true)
 
       updateGameRound(player.copy(inPenaltyBox = true))
     } else {
-      val nextPlayer = prepareNextPlayer(players.length, player.id)
-      this.copy(currentPlayerId = nextPlayer)
+      this.copy(currentPlayerId = getNextPlayerIndex(players.length, player.id))
     }
 
     (updatedGameSession, CONTINUE_GAME)
@@ -77,9 +75,7 @@ case class GameSession(
         printAnswerWasCorrectMessage(player.name, updatedPlayer.goldCoins)
         checkIfGameEnds(updatedPlayer)
       } else {
-        val nextPlayer = prepareNextPlayer(players.length, player.id)
-
-        (this.copy(currentPlayerId = nextPlayer), CONTINUE_GAME)
+        (this.copy(currentPlayerId = getNextPlayerIndex(players.length, player.id)), CONTINUE_GAME)
       }
     } else {
       printAnswerWasCorrectMessage(player.name, updatedPlayer.goldCoins)
@@ -128,9 +124,8 @@ case class GameSession(
   }
 
   private def updateGameRound(currentPlayer: Player): GameSession = {
-    val nextPlayer = prepareNextPlayer(players.length, currentPlayerId)
-
-    this.copy(players = players.updated(currentPlayerId, currentPlayer), currentPlayerId = nextPlayer)
+    this.copy(players = players.updated(currentPlayerId, currentPlayer),
+      currentPlayerId = getNextPlayerIndex(players.length, currentPlayerId))
   }
 
   def finishGame: Boolean = {

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61c3cf73-6d34-41a7-bae2-5bb825c94b9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameHelper.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/adaptionsoft/games/trivia/utils/GameSession.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +74,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="ScalaTest.UnitTests">
+  <component name="RunManager" selected="ScalaTest.UnitTests.UT02 - Game is unplayable">
     <configuration name="RefactoredGameRunner" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.adaptionsoft.games.trivia.runner.RefactoredGameRunner" />
       <module name="scala" />
@@ -154,7 +154,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UnitTests.UT08 - test game" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="UnitTests.UT02 - Game is unplayable" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="scala" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -175,7 +175,7 @@
       <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <option name="testClassPath" value="UnitTests" />
-      <option name="testName" value="UT08 - test game" />
+      <option name="testName" value="UT02 - Game is unplayable" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -183,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.UnitTests.UT02 - Game is unplayable" />
         <item itemvalue="ScalaTest.UnitTests" />
         <item itemvalue="Application.RefactoredGameRunner" />
         <item itemvalue="Application.com.adaptionsoft.games.uglytrivia.main" />
         <item itemvalue="ScalaTest.UnitTests.Integration test - test a full game" />
-        <item itemvalue="ScalaTest.UnitTests.UT08 - test game" />
       </list>
     </recent_temporary>
   </component>
@@ -213,7 +213,7 @@
       <updated>1737104570202</updated>
       <workItem from="1737104571251" duration="87000" />
       <workItem from="1737104740602" duration="26000" />
-      <workItem from="1737104776242" duration="43714000" />
+      <workItem from="1737104776242" duration="45103000" />
     </task>
     <servers />
   </component>
