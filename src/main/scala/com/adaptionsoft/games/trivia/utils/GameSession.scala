@@ -26,29 +26,25 @@ case class GameSession(
   def rollDices(roll: Int): GameSession = {
     val player = players(currentPlayerId)
     println(s"${player.name} is the current player")
-    println(s"They have rolled a $roll")
+    println(s"Rolled a $roll")
 
     val isGettingOutOfPenaltyBox = player.inPenaltyBox && (roll % 2 != 0)
 
-    val nextQuestionCategoryIndex = if (!isGettingOutOfPenaltyBox && player.inPenaltyBox) {
+    if (!isGettingOutOfPenaltyBox && player.inPenaltyBox) {
       println(s"${player.name} is not getting out of the penalty box")
 
-      player.questionCategoryIndex
+      this
     } else {
-      val nextQuestionCategory = calculateNextQuestionCategoryIndex(player.questionCategoryIndex, roll)
+      val nextQuestionCategoryIndex = calculateNextQuestionCategoryIndex(player.questionCategoryIndex, roll)
 
       if (player.inPenaltyBox) println(s"${player.name} is getting out of the penalty box")
-      println(s"${player.name}'s new location is $nextQuestionCategory")
-      println(s"The category is ${currentCategory(nextQuestionCategory)}")
+      println(s"${player.name}'s new location is $nextQuestionCategoryIndex")
 
-      nextQuestionCategory
+      val updatedSessionBasedOnQuestion = askQuestion(nextQuestionCategoryIndex)
+      val updatedPlayer = player.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
+
+      updatedSessionBasedOnQuestion.copy(players = players.updated(currentPlayerId, updatedPlayer))
     }
-
-    val (newGameSessionWithUpdatedQuestions, question) = askQuestion(nextQuestionCategoryIndex)
-    println(question)
-    
-    val updatedPlayer = player.copy(questionCategoryIndex = nextQuestionCategoryIndex, isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox)
-    newGameSessionWithUpdatedQuestions.copy(players = players.updated(currentPlayerId, updatedPlayer))
   }
 
   def wrongAnswer(): (GameSession, Boolean) = {
@@ -83,8 +79,8 @@ case class GameSession(
     }
   }
 
-  def askQuestion(playerPlace: Int): (GameSession, String) = {
-    currentCategory(playerPlace) match {
+  def askQuestion(questionCategoryIndex: Int): GameSession = {
+    currentCategory(questionCategoryIndex) match {
       case Pop => extractQuestionFromList(Pop)
       case Science => extractQuestionFromList(Science)
       case Sports => extractQuestionFromList(Sports)
@@ -93,7 +89,7 @@ case class GameSession(
     }
   }
 
-  private def extractQuestionFromList(questionCategory: QuestionCategory): (GameSession, String) = {
+  private def extractQuestionFromList(questionCategory: QuestionCategory): GameSession = {
     val (question, updatedQuestions) = questionCategory match {
       case Pop => (questions.popQuestions.head, updateQuestions(questionCategory))
       case Science => (questions.scienceQuestions.head, updateQuestions(questionCategory))
@@ -102,7 +98,9 @@ case class GameSession(
       case _ => throw new Exception("Undefined question category!")
     }
 
-    (this.copy(questions = updatedQuestions), question)
+    println(s"The category is $questionCategory")
+    println(question)
+    this.copy(questions = updatedQuestions)
   }
 
   private def updateQuestions(questionCategory: QuestionCategory): GameQuestions = {

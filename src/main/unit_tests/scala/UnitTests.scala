@@ -84,31 +84,31 @@ class UnitTests extends AnyFunSuite with ExpectedResults{
   test("UT06 - askQuestion: 1 question from each category") {
     val someGame = GameSession()
 
-    val placeForPopQuestion = 0
-    assert(someGame.askQuestion(placeForPopQuestion)._2 == "Pop question 1")
+    val popQuestionCategoryIndex = 0
+    assert(someGame.askQuestion(popQuestionCategoryIndex).questions.popQuestions.head == "Pop question 2")
 
-    val placeForScienceQuestion = 1
-    assert(someGame.askQuestion(placeForScienceQuestion)._2 == "Science question 1")
+    val scienceQuestionCategoryIndex = 1
+    assert(someGame.askQuestion(scienceQuestionCategoryIndex).questions.scienceQuestions.head == "Science question 2")
 
-    val placeForSportsQuestion = 2
-    assert(someGame.askQuestion(placeForSportsQuestion)._2 == "Sports question 1")
+    val sportsQuestionCategoryIndex = 2
+    assert(someGame.askQuestion(sportsQuestionCategoryIndex).questions.sportsQuestions.head == "Sports question 2")
 
-    val placeForRockQuestion = 3
-    assert(someGame.askQuestion(placeForRockQuestion)._2 == "Rock question 1")
+    val rockQuestionCategoryIndex = 3
+    assert(someGame.askQuestion(rockQuestionCategoryIndex).questions.rockQuestions.head == "Rock question 2")
   }
 
   test("UT07 - askQuestion: multiple questions from the same category") {
     val someGame = GameSession()
     val placeForPopQuestion = 0
 
-    val (firstNewGameSession, firstQuestion) = someGame.askQuestion(placeForPopQuestion)
-    assert(firstQuestion == "Pop question 1")
+    val firstNewGameSession = someGame.askQuestion(placeForPopQuestion)
+    assert(firstNewGameSession.questions.popQuestions.head == "Pop question 2", "After the first question was asked, the list should start with the second question")
 
-    val (secondNewGameSession, secondQuestion) = firstNewGameSession.askQuestion(placeForPopQuestion)
-    assert(secondQuestion == "Pop question 2")
+    val secondNewGameSession = firstNewGameSession.askQuestion(placeForPopQuestion)
+    assert(secondNewGameSession.questions.popQuestions.head == "Pop question 3", "The list of questions should start with the 3rd question")
 
-    val (thirdNewGameSession, thirdQuestion) = secondNewGameSession.askQuestion(placeForPopQuestion)
-    assert(thirdQuestion == "Pop question 3")
+    val thirdNewGameSession = secondNewGameSession.askQuestion(placeForPopQuestion)
+    assert(thirdNewGameSession.questions.popQuestions.head == "Pop question 4", "The list of questions should start with the 4th question")
   }
 
   /** Comparison with old version (using the same seed, 888)
