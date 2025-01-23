@@ -10,15 +10,14 @@ trait GameHelper {
     println(s"$playerName now has $playerGold gold coins.")
   }
 
-  def currentCategory(questionCategoryIndex: Int): QuestionCategory = {
+  def currentCategory(questionCategoryIndex: Int): QuestionCategory =
     questionCategoryIndex % QuestionCategories.values.size match {
       case 0 => Pop
       case 1 => Science
       case 2 => Sports
       case 3 => Rock
-      case _ => throw new Exception("Unidentified category!")
+      //      case _ => Rock3
     }
-  }
 
   def calculateNextQuestionCategoryIndex(currentPlace: Int, roll: Int): Int = (currentPlace + roll) % 12
 

@@ -85,7 +85,7 @@ case class GameSession(
       case Science => extractQuestionFromList(Science)
       case Sports => extractQuestionFromList(Sports)
       case Rock => extractQuestionFromList(Rock)
-      case _ => throw new Exception("An error occurred during askQuestion!")
+      //      case _ => throw new Exception("An error occurred during askQuestion!")
     }
   }
 
@@ -113,9 +113,10 @@ case class GameSession(
     }
   }
 
+  // numele nu e sugestiv
   private def checkIfGameEnds(updatedPlayer: Player): (GameSession, Boolean) = {
     if (didPlayerWin(updatedPlayer.goldCoins)) {
-      (this.copy(players = players.updated(currentPlayerId, updatedPlayer)), END_GAME)
+      (this.copy(players = players.updated(currentPlayerId, updatedPlayer)), END_GAME) // enum GameStatus
     } else {
       (updateGameRound(updatedPlayer), CONTINUE_GAME)
     }
